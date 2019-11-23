@@ -8,7 +8,7 @@ package gps;
 import java.util.ArrayList;
 
 class Data{
-    int dia, mes, ano;
+    int mes, ano;
 }
 
 public class Utilizador {
