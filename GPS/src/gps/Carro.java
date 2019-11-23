@@ -3,17 +3,20 @@ package gps;
 public class Carro {
     
     private String marca, modelo, matricula;
-    private Utilizador utilizador;
+    //private Utilizador utilizador;
     
     public Carro(String marca, String modelo, String matricula, Utilizador utilizador){
         this.marca = marca;
         this.modelo = modelo;
         this.matricula = matricula;
-        this.utilizador = new Utilizador();
+        //this.utilizador = new Utilizador();
     }
     
     public boolean setMatricula(String matricula){
-        if(matricula[2] == '-' && matricula[5] == '-')
+        if(matricula.charAt(2) == '-' &&  matricula.charAt(5)== '-')
+            ;//verificar tambem o padrao, se esta letras num lado nao 
+             //pode estar noutro e ver se estao em caps
+        return false;
     }
     
     public String getMarca(){
