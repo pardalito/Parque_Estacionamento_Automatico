@@ -171,13 +171,16 @@ public class TelaLogin extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         if (txtLogin.getText().equals("josescalco")&&txtSenha.getText().equals("1234")){
-            JOptionPane.showMessageDialog(null,"Bem-vindo!");            
+            JOptionPane.showMessageDialog(null,"Bem-vindo!");
+    
+        //Likando com a tela menu
+        TelaMenu menu = new TelaMenu ();
+        menu.setVisible(true);       
+           
         }
         else {
             JOptionPane.showMessageDialog(null,"Acesso Negado.");  
         }
-        
-        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -246,4 +249,8 @@ public class TelaLogin extends javax.swing.JDialog {
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    private void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
