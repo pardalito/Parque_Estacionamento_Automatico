@@ -6,15 +6,55 @@
 package gps;
 
 import java.util.ArrayList;
-
-class Data{
-    int mes, ano;
+import java.util.Calendar;
+final class Data{
+    private int mes, ano;
+    
+    public Data(int mes, int ano){
+        if(setMes(mes) == false){
+            System.out.println("Mes errado...");
+            System.exit(1);
+        }
+        if(setAno(ano) == false){
+            System.out.println("Ano errado...");
+            System.exit(2);
+        }
+    }
+    
+    public int getMes(){
+        return mes;
+    }
+    
+    public int getAno(){
+        return ano;
+    }
+    
+    public boolean setMes(int mes){
+        Calendar cal = Calendar.getInstance();
+        if(mes < 1 || mes > 12)
+            return false;
+        if(cal.get(Calendar.YEAR) == ano){
+            if(cal.get(Calendar.MONTH) < mes)
+                return false;
+        }
+        this.mes = mes;
+        return true;
+    }
+    
+    public boolean setAno(int ano){
+        Calendar cal = Calendar.getInstance();
+        if(cal.get(Calendar.YEAR) > ano)
+            return false;
+        this.ano = ano;
+        return true;
+    }
 }
 
 public class Utilizador {
     
     private static int n=0;
-    private int id, num_cartao, csv, perg_segur;
+    private final int id;
+    private int num_cartao, csv, perg_segur;
     private Data validade;
     private String nome_completo, email, password, resposta_seguranca;
     ArrayList<Carro> carros;
@@ -60,7 +100,7 @@ public class Utilizador {
     }
 
     
-    public Data getValidade() {
+    public final Data getValidade() {
         return validade;
     }
 
@@ -70,12 +110,12 @@ public class Utilizador {
     }
 
     
-    public String getNome_completo() {
+    public final String getNome_completo() {
         return nome_completo;
     }
 
     
-    public String getEmail() {
+    public final String getEmail() {
         return email;
     }
 
@@ -85,7 +125,7 @@ public class Utilizador {
     }
 
     
-    public String getPassword() {
+    public final String getPassword() {
         return password;
     }
 
@@ -95,7 +135,7 @@ public class Utilizador {
     }
 
     
-    public String getResposta_seguranca() {
+    public final String getResposta_seguranca() {
         return resposta_seguranca;
     }
     
