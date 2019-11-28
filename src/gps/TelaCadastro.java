@@ -45,7 +45,6 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque de Estacionamento Automático");
-        setPreferredSize(new java.awt.Dimension(628, 502));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(628, 502));
 
@@ -63,7 +62,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jLabel6.setText("CSV");
 
-        jButton1.setText("Registrar");
+        jButton1.setText("Salvar");
 
         jLabel7.setText("Validade");
 
