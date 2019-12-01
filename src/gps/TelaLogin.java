@@ -20,6 +20,9 @@ public class TelaLogin extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+    public TelaLogin() {
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
