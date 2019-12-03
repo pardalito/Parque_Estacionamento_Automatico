@@ -5,6 +5,10 @@
  */
 package gps;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -191,6 +195,24 @@ public class TelaLogin extends javax.swing.JDialog {
         else {
             JOptionPane.showMessageDialog(null,"Acesso Negado.");  
         }
+        
+        /*String str = "Pedro 1234";
+        BufferedWriter writer = new BufferedWriter(new FileWriter("bd.txt"));
+       
+            writer.write(str);
+        
+            writer.close();
+        
+        File bd = new File("bd.txt");
+        
+            Scanner scan = new Scanner(bd);
+        
+        if(bd==null)
+            JOptionPane.showMessageDialog(null,"Erro ao abrir o ficheiro");
+        if(bd.length()==0)
+            JOptionPane.showMessageDialog(null,"Nao existem utilizadores  registados");
+        */
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
