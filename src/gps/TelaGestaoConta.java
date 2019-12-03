@@ -42,10 +42,19 @@ public class TelaGestaoConta extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(628, 503));
 
         jButton1.setText("Dados Início Sessão");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Veículos");
+        jButton2.setMaximumSize(new java.awt.Dimension(145, 32));
+        jButton2.setMinimumSize(new java.awt.Dimension(145, 32));
 
         jButton3.setText("Pagamento");
+        jButton3.setMaximumSize(new java.awt.Dimension(145, 32));
+        jButton3.setMinimumSize(new java.awt.Dimension(145, 32));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -165,6 +174,10 @@ public class TelaGestaoConta extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
