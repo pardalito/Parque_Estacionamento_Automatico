@@ -5,6 +5,8 @@
  */
 package gps;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jose Pedro
@@ -46,7 +48,6 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque de Estacionamento Automático");
-        setPreferredSize(new java.awt.Dimension(628, 503));
         setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(628, 502));
@@ -72,6 +73,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel6.setText("CSV");
 
         jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Validade");
 
@@ -145,7 +151,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,7 +212,60 @@ public class TelaCadastro extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    //Botao salvar
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String nome = jTextField1.getText();
+        String Email = jTextField2.getText();
+        String Senha = jPasswordField1.getText();
+        String nCartao = jTextField4.getText();
+        String CSV = jFormattedTextField2.getText();
+        String Validade = jFormattedTextField1.getSelectedText();
+        
+        
+        if (CheckCSV(CSV)){
+            JOptionPane.showMessageDialog(null, "Bem vindo");
+            
+            TelaMenu menu = new TelaMenu();
+            menu.setVisible(true);
+            dispose();
+              
+           
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"Acesso Negado.");  
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    /*
+    *   Funçoes de verificaçao de parametros
+    *
+    *
+    *
+    *
+    */
+    boolean Checknome(String nome){
+       return (nome.length() >= 10 && nome.length() <= 80);
+    }
+    
+    boolean CheckCSV(String csv) {
+    return (csv.length() == 3);
+    }
+    /*
+    boolean CheckEmail(String Email){
+                
+    }
+    
+    boolean CheckSenha(String Senha){
+        
+    }
+    */
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
