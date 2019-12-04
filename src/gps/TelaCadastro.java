@@ -255,15 +255,37 @@ public class TelaCadastro extends javax.swing.JFrame {
     *
     */
     boolean Checknome(String nome){
-       return (nome.length() >= 10 && nome.length() <= 80);
+        if(nome.length() < 10 || nome.length() > 80)
+            return false;
+        char[] a = nome.toCharArray();
+
+        for (char c : a) {
+            if(!(((c >= 'a') && (c <= 'z'))
+                    || ((c >= 'A') && (c <= 'Z'))
+                    || (c == ' ')))
+                            return false;
+        }
+        return true;
     }
     
     boolean CheckCSV(String csv) {
     return (csv.matches("[0-9]+") && csv.length() == 3);
     }
     
-    boolean CheckPassword(String senha) { 
-        return (senha.length() >= 8 && senha.length() <= 25);
+    boolean CheckPassword(String password) { 
+        if(password.length() < 8 || password.length() > 25)
+            return false;
+        
+        char[] a = password.toCharArray();
+
+        for (char c : a) {
+            if(!(((c >= 'a') && (c <= 'z'))
+                    || ((c >= 'A') && (c <= 'Z'))
+                    || ((c >= '0') && (c <= '9')
+                    || (c == ' '))))
+                            return false;
+        }
+        return true;
     }
     
     boolean CheckEmail(String email) {
