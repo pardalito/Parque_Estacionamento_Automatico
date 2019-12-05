@@ -200,7 +200,7 @@ public class TelaLogin extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Acesso Negado.");  
         }*/
         //escrever no ficheiro apagar no fim
-        String str = "Pedro 1234";
+        String str = "Pedro 1234\nZe 5678";
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter("bd.txt"));
@@ -219,32 +219,38 @@ public class TelaLogin extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Erro ao abrir o ficheiro");
             if(bd.length()==0)
                 JOptionPane.showMessageDialog(null,"Nao existem utilizadores  registados");
-        String info = scan.nextLine();
-        String nome ="",pass="";
-        int i;
-        //guardar nome
-        for(i=0;i<info.length() && info.charAt(i)!=' ';i++)
-            if(info.charAt(i)!=' ')
-                nome+=info.charAt(i);   
-        //guardar pass
-        for(;i<info.length();i++)
-            if(info.charAt(i)!=' ')
-                pass+=info.charAt(i);
-        
-        //teste
-        //JOptionPane.showMessageDialog(null,str+"\n"+nome+"\n"+pass);
-        
-        //validaçao
-        if(txtLogin.getText().equals(nome)&&txtSenha.getText().equals(pass)){
-            JOptionPane.showMessageDialog(null,"Login efetuado");
-            //Likando com a tela menu
-            TelaMenu menu = new TelaMenu ();
-            menu.setVisible(true);   
-            dispose();
-        }else
-            JOptionPane.showMessageDialog(null,"Dados incorretos");
-            
-        
+            int x = 0;
+            while(scan.hasNextLine()){
+                String info = scan.nextLine();
+                String nome ="",pass="";
+                int i;
+                //guardar nome
+                for(i=0;i<info.length() && info.charAt(i)!=' ';i++)
+                    if(info.charAt(i)!=' ')
+                        nome+=info.charAt(i);   
+                //guardar pass
+                for(;i<info.length();i++)
+                    if(info.charAt(i)!=' ')
+                        pass+=info.charAt(i);
+
+                //teste
+                //JOptionPane.showMessageDialog(null,str+"\n"+nome+"\n"+pass);
+
+                //validaçao
+                if(txtLogin.getText().equals(nome)&&txtSenha.getText().equals(pass)){
+                    x=1;
+                    break;
+                }else
+                    x=0;
+            }
+            if(x==1){
+                JOptionPane.showMessageDialog(null,"Login efetuado");
+                //Likando com a tela menu
+                TelaMenu menu = new TelaMenu ();
+                menu.setVisible(true);   
+                dispose(); 
+            }else
+                JOptionPane.showMessageDialog(null,"Dados incorretos");   
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
