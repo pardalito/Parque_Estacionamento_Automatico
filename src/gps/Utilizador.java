@@ -228,9 +228,12 @@ public class Utilizador {
     }
     
     public static boolean CheckData(String mes, String ano) {
-        Calendar cal = Calendar.getInstance();
-        if(mes == null || ano == null)
+        
+        if(mes == null || ano == null || (!mes.matches("[0-9]+") && mes.length() != 2) || (!ano.matches("[0-9]+") && ano.length() != 4))
             return false;
+        
+        Calendar cal = Calendar.getInstance();
+        
         int mes1 = Integer.parseInt(mes);
         int ano1 = Integer.parseInt(ano);
         if (mes1 < Data.mesI || mes1 > Data.mesF || cal.get(Calendar.YEAR) > ano1) {
