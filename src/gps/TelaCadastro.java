@@ -247,64 +247,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
     
-    /*
-    *   Funçoes de verificaçao de parametros
-    *
-    *
-    *
-    *
-    */
-    boolean Checknome(String nome){
-        if(nome.length() < 10 || nome.length() > 80)
-            return false;
-        char[] a = nome.toCharArray();
 
-        for (char c : a) {
-            if(!(((c >= 'a') && (c <= 'z'))
-                    || ((c >= 'A') && (c <= 'Z'))
-                    || (c == ' ')))
-                            return false;
-        }
-        return true;
-    }
-    
-    boolean CheckCSV(String csv) {
-    return (csv.matches("[0-9]+") && csv.length() == 3);
-    }
-    
-    boolean CheckPassword(String password) { 
-        if(password.length() < 8 || password.length() > 25)
-            return false;
-        
-        char[] a = password.toCharArray();
-
-        for (char c : a) {
-            if(!(((c >= 'a') && (c <= 'z'))
-                    || ((c >= 'A') && (c <= 'Z'))
-                    || ((c >= '0') && (c <= '9')
-                    || (c == ' '))))
-                            return false;
-        }
-        return true;
-    }
-    
-    boolean CheckEmail(String email) {
-           String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-           java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-           java.util.regex.Matcher m = p.matcher(email);
-           return m.matches();
-    }
-    
-    boolean ChecknCartao(String ncartao){
-        return (ncartao.matches("[0-9]+") && ncartao.length() == 16);
-    }
-    
-    
-    
-    
-    
-    
-    
     /**
      * @param args the command line arguments
      */
