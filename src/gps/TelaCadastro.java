@@ -323,12 +323,12 @@ public class TelaCadastro extends javax.swing.JFrame {
             nomeerromsg4.show();
             allvalid = false;
         }
-        /*
+        
         if(!Utilizador.CheckData(Mes, Ano)){
             jLabel8.show();
             allvalid = false;
         }
-        */
+        
       
         if (allvalid){
             JOptionPane.showMessageDialog(null, "Bem vindo");
