@@ -229,7 +229,8 @@ public class TelaLogin extends javax.swing.JDialog {
         //guardar pass
         for(;i<info.length();i++)
             if(info.charAt(i)!=' ')
-                pass+=info.charAt(i); 
+                pass+=info.charAt(i);
+        
         //teste
         //JOptionPane.showMessageDialog(null,str+"\n"+nome+"\n"+pass);
         
