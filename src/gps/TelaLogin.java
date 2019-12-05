@@ -7,8 +7,12 @@ package gps;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -183,7 +187,7 @@ public class TelaLogin extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        if (txtLogin.getText().equals("josescalco")&&txtSenha.getText().equals("1234")){
+        /*if (txtLogin.getText().equals("josescalco")&&txtSenha.getText().equals("1234")){
             JOptionPane.showMessageDialog(null,"Bem-vindo!");
     
         //Likando com a tela menu
@@ -194,24 +198,57 @@ public class TelaLogin extends javax.swing.JDialog {
         }
         else {
             JOptionPane.showMessageDialog(null,"Acesso Negado.");  
-        }
-        
-        /*String str = "Pedro 1234";
-        BufferedWriter writer = new BufferedWriter(new FileWriter("bd.txt"));
-       
+        }*/
+        //escrever no ficheiro apagar no fim
+        String str = "Pedro 1234";
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter("bd.txt"));
             writer.write(str);
-        
             writer.close();
-        
+        } catch (IOException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        //ler do ficheiro
         File bd = new File("bd.txt");
         
+        try {
             Scanner scan = new Scanner(bd);
+            if(bd==null)
+                JOptionPane.showMessageDialog(null,"Erro ao abrir o ficheiro");
+            if(bd.length()==0)
+                JOptionPane.showMessageDialog(null,"Nao existem utilizadores  registados");
+        String info = scan.nextLine();
+        String nome ="",pass="";
+        int i;
+        //guardar nome
+        for(i=0;i<info.length() && info.charAt(i)!=' ';i++)
+            if(info.charAt(i)!=' ')
+                nome+=info.charAt(i);   
+        //guardar pass
+        for(;i<info.length();i++)
+            if(info.charAt(i)!=' ')
+                pass+=info.charAt(i); 
+        //teste
+        //JOptionPane.showMessageDialog(null,str+"\n"+nome+"\n"+pass);
         
-        if(bd==null)
-            JOptionPane.showMessageDialog(null,"Erro ao abrir o ficheiro");
-        if(bd.length()==0)
-            JOptionPane.showMessageDialog(null,"Nao existem utilizadores  registados");
-        */
+        //validaçao
+        if(txtLogin.getText().equals(nome)&&txtSenha.getText().equals(pass)){
+            JOptionPane.showMessageDialog(null,"Login efetuado");
+            //Likando com a tela menu
+            TelaMenu menu = new TelaMenu ();
+            menu.setVisible(true);   
+            dispose();
+        }else
+            JOptionPane.showMessageDialog(null,"Dados incorretos");
+            
+        
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
