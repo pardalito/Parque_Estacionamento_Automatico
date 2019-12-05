@@ -7,7 +7,7 @@ package gps;
 
 /**
  *
- * @author Jose Pedro
+ * @author Jose Pedro - alteração teste
  */
 public class TelaMelhoresLugares extends javax.swing.JFrame {
 
