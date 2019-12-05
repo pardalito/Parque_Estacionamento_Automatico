@@ -229,7 +229,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         String Validade = jFormattedTextField1.getSelectedText();
         
         
-        if (Checknome(nome) && CheckCSV(CSV) && CheckPassword(Senha) && CheckEmail(Email) && ChecknCartao(nCartao)){
+        if (Utilizador.Checknome(nome)){
             JOptionPane.showMessageDialog(null, "Bem vindo");
             
             TelaMenu menu = new TelaMenu();

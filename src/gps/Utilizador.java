@@ -130,9 +130,7 @@ public class Utilizador {
         this.csv = csv;
     }
     
-    boolean CheckCSV(String csv) {
-    return (csv.matches("[0-9]+") && csv.length() == 3);
-    }
+    
 
     /**
      * @return the num_cartao
@@ -148,9 +146,7 @@ public class Utilizador {
         num_cartao = numC;
     }
     
-    boolean ChecknCartao(String ncartao){
-        return (ncartao.matches("[0-9]+") && ncartao.length() == 16);
-    }
+    
 
     /**
      * @return the validade
@@ -183,19 +179,7 @@ public class Utilizador {
         this.nome_completo = nome;
     }
     
-    boolean Checknome(String nome){
-        if(nome.length() < 10 || nome.length() > 80)
-            return false;
-        char[] a = nome.toCharArray();
-
-        for (char c : a) {
-            if(!(((c >= 'a') && (c <= 'z'))
-                    || ((c >= 'A') && (c <= 'Z'))
-                    || (c == ' ')))
-                            return false;
-        }
-        return true;
-    }
+    
 
     /**
      * @return the email
@@ -211,12 +195,6 @@ public class Utilizador {
         this.email = email;
     }
     
-    public boolean CheckEmail(String email) {
-           String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-           java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-           java.util.regex.Matcher m = p.matcher(email);
-           return m.matches();
-    }
 
     /**
      * @return the password
@@ -232,21 +210,7 @@ public class Utilizador {
         this.password = password;
     }
     
-    boolean CheckPassword(String password) { 
-        if(password.length() < 8 || password.length() > 25)
-            return false;
-        
-        char[] a = password.toCharArray();
 
-        for (char c : a) {
-            if(!(((c >= 'a') && (c <= 'z'))
-                    || ((c >= 'A') && (c <= 'Z'))
-                    || ((c >= '0') && (c <= '9')
-                    || (c == ' '))))
-                            return false;
-        }
-        return true;
-    }
 
     /**
      * @return the carros
@@ -261,5 +225,58 @@ public class Utilizador {
     public void setCarros(ArrayList<Carro> carros) {
         this.carros = carros;
     }
+    
+    /*
+    *
+    * Verificaçoes
+    *
+    */
+    
+        public static boolean CheckPassword(String password) { 
+        if(password.length() < 8 || password.length() > 25)
+            return false;
+        
+        char[] a = password.toCharArray();
+
+        for (char c : a) {
+            if(!(((c >= 'a') && (c <= 'z'))
+                    || ((c >= 'A') && (c <= 'Z'))
+                    || ((c >= '0') && (c <= '9')
+                    || (c == ' '))))
+                            return false;
+        }
+        return true;
+    }
+        
+         public static boolean CheckEmail(String email) {
+           String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+           java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+           java.util.regex.Matcher m = p.matcher(email);
+           return m.matches();
+    }
+         
+         
+        public static boolean Checknome(String nome){
+        if(nome.length() < 10 || nome.length() > 80)
+            return false;
+        char[] a = nome.toCharArray();
+
+        for (char c : a) {
+            if(!(((c >= 'a') && (c <= 'z'))
+                    || ((c >= 'A') && (c <= 'Z'))
+                    || (c == ' ')))
+                            return false;
+        }
+        return true;
+    }
+         
+        public static boolean ChecknCartao(String ncartao){
+        return (ncartao.matches("[0-9]+") && ncartao.length() == 16);
+    }
+        
+        public static boolean CheckCSV(String csv) {
+    return (csv.matches("[0-9]+") && csv.length() == 3);
+    }
+
     
 }
