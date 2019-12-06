@@ -140,7 +140,7 @@
                           <Component id="jLabel8" min="-2" pref="172" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="25" pref="151" max="32767" attributes="0"/>
+                  <EmptySpace min="25" pref="156" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -269,6 +269,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>

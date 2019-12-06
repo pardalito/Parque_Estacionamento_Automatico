@@ -51,6 +51,11 @@ public class TelaGestaoConta extends javax.swing.JFrame {
         jButton2.setText("Veículos");
         jButton2.setMaximumSize(new java.awt.Dimension(145, 32));
         jButton2.setMinimumSize(new java.awt.Dimension(145, 32));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Pagamento");
         jButton3.setMaximumSize(new java.awt.Dimension(145, 32));
@@ -62,6 +67,11 @@ public class TelaGestaoConta extends javax.swing.JFrame {
         });
 
         jTextField1.setToolTipText("");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setToolTipText("");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +189,14 @@ public class TelaGestaoConta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,10 +225,8 @@ public class TelaGestaoConta extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaGestaoConta().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaGestaoConta().setVisible(true);
         });
     }
 

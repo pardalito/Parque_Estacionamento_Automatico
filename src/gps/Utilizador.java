@@ -46,13 +46,13 @@ public class Utilizador {
     private String password;
     private ArrayList<Carro> carros;
 
-    public Utilizador(String nome_completo, String email, String password, String num_cartao, String csv, Data validade) {
+    public Utilizador(String nome_completo, String email, String password, String num_cartao, String csv, String mes, String ano) {
         this.nome_completo = nome_completo;
         this.email = email;
         this.password = password;
         this.num_cartao = num_cartao;
         this.csv = csv;
-        this.validade = validade;
+        this.validade = new Data(Integer.parseInt(mes) , Integer.parseInt(ano));
     }
 
         /**
@@ -112,7 +112,7 @@ public class Utilizador {
     }
 
     /**
-     * @param num_cartao the num_cartao to set
+     * @param numC
      */
     public void setNumCartao(String numC) {
         num_cartao = numC;
@@ -128,7 +128,6 @@ public class Utilizador {
 
     /**
      * @param nome
-     * @param nome_completo the nome_completo to set
      */
     public void setNomeCompleto(String nome) {
         this.nome_completo = nome;
@@ -230,8 +229,7 @@ public class Utilizador {
     public static boolean CheckData(String mes, String ano) {
         
         if(mes == null || ano == null || (!mes.matches("[0-9]+") && mes.length() != 2) || (!ano.matches("[0-9]+") && ano.length() != 4))
-            return false;
-        
+            return false;      
         Calendar cal = Calendar.getInstance();
         
         int mes1 = Integer.parseInt(mes);

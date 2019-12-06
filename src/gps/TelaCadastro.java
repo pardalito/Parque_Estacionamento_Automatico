@@ -101,6 +101,12 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jLabel7.setText("Validade");
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         jButton2.setText("<");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +202,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 151, Short.MAX_VALUE))
+                .addGap(25, 156, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +309,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         if(!Utilizador.Checknome(nome)){
             nomeerromsg.show();
             allvalid = false;
-    }
+        }
         if(!Utilizador.CheckPassword(Senha)){
              nomeerromsg2.show();
              allvalid = false;
@@ -329,17 +335,14 @@ public class TelaCadastro extends javax.swing.JFrame {
             allvalid = false;
         }
         
-      
         if (allvalid){
             JOptionPane.showMessageDialog(null, "Bem vindo");
             
             TelaMenu menu = new TelaMenu();
+            Utilizador uti= new Utilizador(nome, Email, Senha, nCartao, CSV, Mes, Ano);
             menu.setVisible(true);
             dispose();
-              
-           
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -349,6 +352,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
     
 
     /**
@@ -379,10 +386,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastro().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaCadastro().setVisible(true);
         });
     }
 
