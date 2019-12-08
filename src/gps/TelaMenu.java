@@ -11,11 +11,18 @@ package gps;
  */
 public class TelaMenu extends javax.swing.JFrame {
 
+    private Utilizador user;
+    
     /**
      * Creates new form Menu
      */
     public TelaMenu() {
         initComponents();
+        user = new Utilizador(); //está vazio para propósitos de teste
+    }
+    
+    public void setUtilizador(Utilizador user){
+        this.user = user;
     }
 
     /**
@@ -123,6 +130,8 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        System.out.println("Email: "+user.getEmail()+"\nPassword: "+user.getPassword());
+        System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade().getMes()+"/"+user.getValidade().getAno());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -133,6 +142,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         TelaGestaoConta gestao = new TelaGestaoConta();
+        gestao.setUtilizador(user);
         gestao.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed

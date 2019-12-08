@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class TelaCadastro extends javax.swing.JFrame {
 
+    private Utilizador user;
+    
     /**
      * Creates new form TelaCadastro
      */
@@ -24,6 +26,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         nomeerromsg3.hide();
         nomeerromsg4.hide();
         jLabel8.hide();
+        user = new Utilizador();
     }
 
     /**
@@ -292,7 +295,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         String Email = jTextField2.getText();
         String Senha = new String(jPasswordField1.getPassword());
         String nCartao = jTextField4.getText();
-        String CSV = jTextField3.getText();
+        String CVC = jTextField3.getText();
         //String Validade = 
         String Mes = jTextField5.getText();
         String Ano = jTextField6.getText();
@@ -306,31 +309,32 @@ public class TelaCadastro extends javax.swing.JFrame {
         nomeerromsg4.hide();
         jLabel8.hide();
         
-        if(!Utilizador.Checknome(nome)){
+        if(!user.Checknome(nome)){
             nomeerromsg.show();
             allvalid = false;
         }
-        if(!Utilizador.CheckPassword(Senha)){
+        
+        if(!user.CheckPassword(Senha)){
              nomeerromsg2.show();
              allvalid = false;
         }
         
-        if(!Utilizador.CheckEmail(Email)){
+        if(!user.CheckEmail(Email)){
            nomeerromsg1.show();
            allvalid = false;
         }
         
-        if(!Utilizador.ChecknCartao(nCartao)){
+        if(!user.ChecknCartao(nCartao)){
             nomeerromsg3.show();
             allvalid = false;
         }
         
-        if(!Utilizador.CheckCSV(CSV)){
+        if(!user.CheckCVC(CVC)){
             nomeerromsg4.show();
             allvalid = false;
         }
         
-        if(!Utilizador.CheckData(Mes, Ano)){
+        if(!user.CheckData(Mes, Ano)){
             jLabel8.show();
             allvalid = false;
         }
@@ -338,8 +342,15 @@ public class TelaCadastro extends javax.swing.JFrame {
         if (allvalid){
             JOptionPane.showMessageDialog(null, "Bem vindo");
             
+            user.setNomeCompleto(nome);
+            user.setPassword(Senha);
+            user.setEmail(Email);
+            user.setNumCartao(nCartao);
+            user.setCVC(CVC);
+            user.setValidade(new Data(Integer.parseInt(Mes), Integer.parseInt(Ano)));
+
             TelaMenu menu = new TelaMenu();
-            Utilizador uti= new Utilizador(nome, Email, Senha, nCartao, CSV, Mes, Ano);
+            menu.setUtilizador(user);
             menu.setVisible(true);
             dispose();
         }

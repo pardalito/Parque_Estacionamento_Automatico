@@ -38,7 +38,7 @@ final class Data {
 
 public class Utilizador {
     static final int passMin = 8, passMax = 25, nomeMin = 10, nomeMax = 80;
-    private String csv;
+    private String cvc;
     private String num_cartao;
     private Data validade;
     private String nome_completo;
@@ -51,15 +51,19 @@ public class Utilizador {
         this.email = email;
         this.password = password;
         this.num_cartao = num_cartao;
-        this.csv = csv;
+        this.cvc = cvc;
         this.validade = new Data(Integer.parseInt(mes) , Integer.parseInt(ano));
+    }
+
+    Utilizador() {
+        
     }
 
         /**
      * @return the csv
      */
-    public String getCsv() {
-        return csv;
+    public String getCVC() {
+        return cvc;
     }
     
     /**
@@ -107,8 +111,8 @@ public class Utilizador {
     /**
      * @param csv the csv to set
      */
-    public void setCsv(String csv) {
-        this.csv = csv;
+    public void setCVC(String cvc) {
+        this.cvc = cvc;
     }
 
     /**
@@ -161,7 +165,7 @@ public class Utilizador {
     * Verificaçoes
     *
      */
-    public static boolean CheckPassword(String password) {
+    public boolean CheckPassword(String password) {
         if (password == null) {
             return false;
         }
@@ -183,7 +187,7 @@ public class Utilizador {
         return true;
     }
 
-    public static boolean CheckEmail(String email) {
+    public boolean CheckEmail(String email) {
         if (email == null) {
             return false;
         }
@@ -193,7 +197,7 @@ public class Utilizador {
         return m.matches();
     }
 
-    public static boolean Checknome(String nome) {
+    public boolean Checknome(String nome) {
         if (nome == null) {
             return false;
         }
@@ -212,21 +216,21 @@ public class Utilizador {
         return true;
     }
 
-    public static boolean ChecknCartao(String ncartao) {
+    public boolean ChecknCartao(String ncartao) {
         if (ncartao == null) {
             return false;
         }
         return (ncartao.matches("[0-9]+") && ncartao.length() == 16);
     }
 
-    public static boolean CheckCSV(String csv) {
-        if (csv == null) {
+    public boolean CheckCVC(String cvc) {
+        if (cvc == null) {
             return false;
         }
-        return (csv.matches("[0-9]+") && csv.length() == 3);
+        return (cvc.matches("[0-9]+") && cvc.length() == 3);
     }
     
-    public static boolean CheckData(String mes, String ano) {
+    public boolean CheckData(String mes, String ano) {
         
         if(mes == null || ano == null || (!mes.matches("[0-9]+") && mes.length() != 2) || (!ano.matches("[0-9]+") && ano.length() != 4))
             return false;      
