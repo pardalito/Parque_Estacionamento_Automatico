@@ -22,6 +22,10 @@ public class TelaGestaoConta extends javax.swing.JFrame{
         initComponents();
         user = new Utilizador();
         jLayeredPane1.setVisible(true);
+        msgerroEmail.hide();
+        msgerroPassword1.hide();
+        msgerroPassword2.hide();
+        sucesso.hide();
     }
     
     public void setUtilizador(Utilizador user){
@@ -49,6 +53,10 @@ public class TelaGestaoConta extends javax.swing.JFrame{
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        msgerroPassword1 = new javax.swing.JLabel();
+        msgerroEmail = new javax.swing.JLabel();
+        msgerroPassword2 = new javax.swing.JLabel();
+        sucesso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(628, 503));
@@ -144,42 +152,74 @@ public class TelaGestaoConta extends javax.swing.JFrame{
             }
         });
 
+        msgerroPassword1.setForeground(new java.awt.Color(255, 0, 0));
+        msgerroPassword1.setText("* Introduza apenas espaços, letras e números");
+
+        msgerroEmail.setForeground(new java.awt.Color(255, 0, 0));
+        msgerroEmail.setText("* O E-mail introduzido é inválido");
+
+        msgerroPassword2.setForeground(new java.awt.Color(255, 0, 0));
+        msgerroPassword2.setText("(8-25 caracteres)");
+
+        sucesso.setForeground(new java.awt.Color(0, 255, 0));
+        sucesso.setText("Sucesso");
+
         jLayeredPane1.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(msgerroPassword1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(msgerroEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(msgerroPassword2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(sucesso, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton6)
-                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(sucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPane1Layout.createSequentialGroup()
+                            .addGap(49, 49, 49)
+                            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton6)
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                    .addComponent(msgerroPassword1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(msgerroEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(msgerroPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(124, 124, 124)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(msgerroEmail)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(msgerroPassword1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(msgerroPassword2)
+                .addGap(7, 7, 7)
                 .addComponent(jButton6)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sucesso)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -247,12 +287,34 @@ public class TelaGestaoConta extends javax.swing.JFrame{
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        boolean allvalid = true;
+        
         email = jTextField1.getText();
         password = jTextField2.getText();
-        if(user.CheckPassword(password))
+        
+        
+        msgerroEmail.hide();
+        msgerroPassword1.hide();
+        msgerroPassword2.hide();
+        sucesso.hide();
+        
+        
+        if(!user.CheckPassword(password)){
+            msgerroPassword1.show();
+            msgerroPassword2.show();
+            allvalid = false;
+        }
+        
+        if(!user.CheckEmail(email)){
+            msgerroEmail.show();
+            allvalid = false;
+        }
+        
+        if(allvalid){
             user.setPassword(password);
-        if(user.CheckEmail(email))
             user.setEmail(email);
+            sucesso.show();
+        }
 //        System.out.println("Email: "+email);
 //        System.out.println("Password: "+password);
 //        System.out.println("Email: "+user.getEmail());
@@ -305,6 +367,10 @@ public class TelaGestaoConta extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel msgerroEmail;
+    private javax.swing.JLabel msgerroPassword1;
+    private javax.swing.JLabel msgerroPassword2;
+    private javax.swing.JLabel sucesso;
     // End of variables declaration//GEN-END:variables
 
 

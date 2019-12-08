@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.CheckBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,7 @@ import javax.swing.JOptionPane;
 public class TelaLogin extends javax.swing.JDialog {
 
     private Utilizador user;
+    private String nome = "", pass = "";
     
     /**
      * Creates new form MyGUI
@@ -33,6 +35,12 @@ public class TelaLogin extends javax.swing.JDialog {
     public TelaLogin() {
         initComponents();
         user = new Utilizador();
+    }
+    
+    public void setUtilizador(Utilizador user){
+        this.user = user;
+        if(user.isCheckbox())
+            txtLogin.setText(user.getNome_completo());
     }
 
     /**
@@ -228,7 +236,8 @@ public class TelaLogin extends javax.swing.JDialog {
             int x = 0;
             while(scan.hasNextLine()){
                 String info = scan.nextLine();
-                String nome ="",pass="";
+                nome = "";
+                pass = "";
                 int i;
                 //guardar nome
                 for(i=0;i<info.length() && info.charAt(i)!=' ';i++)
@@ -257,7 +266,8 @@ public class TelaLogin extends javax.swing.JDialog {
                 
 
                 //DAR SETS PARA COLOCAR INFO DO USER NA CLASSE !!!
-                
+                user.setNomeCompleto(nome);
+                user.setPassword(pass);
                 
                 //Likando com a tela menu
                 TelaMenu menu = new TelaMenu ();
@@ -277,10 +287,15 @@ public class TelaLogin extends javax.swing.JDialog {
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
+        if(jCheckBox1.isSelected())
+            user.setCheckbox(true);
+        else
+            user.setCheckbox(false);
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

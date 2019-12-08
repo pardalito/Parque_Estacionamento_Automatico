@@ -45,6 +45,8 @@ public class Utilizador {
     private String email;
     private String password;
     private ArrayList<Carro> carros;
+    
+    private boolean checkbox;
 
     public Utilizador(String nome_completo, String email, String password, String num_cartao, String csv, String mes, String ano) {
         this.nome_completo = nome_completo;
@@ -56,7 +58,6 @@ public class Utilizador {
     }
 
     Utilizador() {
-        
     }
 
         /**
@@ -247,6 +248,20 @@ public class Utilizador {
             }
         }
         return true;
+    }
+
+    /**
+     * @return the checkbox
+     */
+    public boolean isCheckbox() {
+        return checkbox;
+    }
+
+    /**
+     * @param checkbox the checkbox to set
+     */
+    public void setCheckbox(boolean checkbox) {
+        this.checkbox = checkbox;
     }
 
 }

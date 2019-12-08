@@ -130,12 +130,16 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("Email: "+user.getEmail()+"\nPassword: "+user.getPassword());
-        System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade().getMes()+"/"+user.getValidade().getAno());
+        System.out.println("Nome: "+user.getNome_completo()+"\nEmail: "+user.getEmail()+"\nPassword: "+user.getPassword());
+        if(user.getValidade() == null)
+            System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade());
+        else
+            System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade().getMes()+"/"+user.getValidade().getAno());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         TelaLogin login = new TelaLogin();
+        login.setUtilizador(user);
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
