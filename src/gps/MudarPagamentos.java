@@ -347,7 +347,7 @@ public class MudarPagamentos extends javax.swing.JFrame {
         if(allvalid){
             user.setNumCartao(n_cartao);
             user.setCVC(cvc);
-            user.setValidade(new Data(Integer.parseInt(mes), Integer.parseInt(ano)));
+            user.setValidade(mes,ano);
             sucesso.show();
             //        System.out.println("Numero Cartão: "+user.getNum_cartao());
             //        System.out.println("CVC: "+user.getCVC());

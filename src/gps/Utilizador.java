@@ -44,7 +44,8 @@ public class Utilizador {
     static final int passMin = 8, passMax = 25, nomeMin = 10, nomeMax = 80;
     private String cvc;
     private String num_cartao;
-    private Data validade;
+    private String mes;
+    private String ano;
     private String nome_completo;
     private String email;
     private String password;
@@ -52,13 +53,14 @@ public class Utilizador {
     
     private boolean checkbox;
 
-    public Utilizador(String nome_completo, String email, String password, String num_cartao, String csv, String mes, String ano) {
+    public Utilizador(String nome_completo, String email, String password, String num_cartao, String cvc, String mes, String ano) {
         this.nome_completo = nome_completo;
         this.email = email;
         this.password = password;
         this.num_cartao = num_cartao;
         this.cvc = cvc;
-        this.validade = new Data(Integer.parseInt(mes) , Integer.parseInt(ano));
+        this.mes=mes;
+        this.ano=ano;
     }
 
     Utilizador() {
@@ -88,10 +90,18 @@ public class Utilizador {
     /**
      * @return the validade
      */
-    public Data getValidade() {
-        return validade;
-    }    
+    public String getValidade() {
+        return mes+"/"+ano;
+    }   
+    
+    public String getMes() {
+        return mes;
+    }
  
+    public String getAno() {
+        return ano;
+    }
+    
     /**
      * @return the nome_completo
      */
@@ -130,8 +140,9 @@ public class Utilizador {
     /**
      * @param validade the validade to set
      */
-    public void setValidade(Data validade) {
-        this.validade = validade;
+    public void setValidade(String mes,String ano) {
+        this.mes = mes;
+        this.ano = ano;
     }
 
 

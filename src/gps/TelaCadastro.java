@@ -345,7 +345,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             user.setEmail(Email);
             user.setNumCartao(nCartao);
             user.setCVC(CVC);
-            user.setValidade(new Data(Integer.parseInt(Mes), Integer.parseInt(Ano)));
+            user.setValidade(Mes,Ano);
 
             TelaMenu menu = new TelaMenu();
             menu.setUtilizador(user);

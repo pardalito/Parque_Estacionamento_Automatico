@@ -238,11 +238,6 @@ public class TelaLogin extends javax.swing.JDialog {
                         mes+=data.charAt(i);
                     for(;i<data.length();i++)
                         ano+=data.charAt(i);
-                    
-                    /*Data val = new Data();
-                    val.setAno(Integer.parseInt(mes));
-                    val.setAno(Integer.parseInt(ano));
-                    */
                     JOptionPane.showMessageDialog(null,"ola");
                     String num_cart=scan.nextLine();
                     String cvc=scan.nextLine();
@@ -261,7 +256,7 @@ public class TelaLogin extends javax.swing.JDialog {
                     user.setNomeCompleto(nome);
                     user.setNumCartao(num_cart);
                     user.setPassword(pass);
-                    //user.setValidade(val);
+                    user.setValidade(mes,ano);
                     x=1;
                     JOptionPane.showMessageDialog(null,"Login efetuado");
                     //Likando com a tela menu

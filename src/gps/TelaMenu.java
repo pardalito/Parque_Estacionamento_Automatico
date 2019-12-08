@@ -139,7 +139,7 @@ public class TelaMenu extends javax.swing.JFrame {
         if(user.getValidade() == null)
             System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade());
         else
-            System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade().getMes()+"/"+user.getValidade().getAno());
+            System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
