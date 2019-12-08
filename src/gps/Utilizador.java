@@ -18,6 +18,10 @@ final class Data {
         this.mes = mes;
         this.ano = ano;
     }
+    
+    public Data(){
+        
+    }
 
     public int getMes() {
         return mes;
@@ -27,11 +31,11 @@ final class Data {
         return ano;
     }
 
-    private void setMes(int mes, int ano) {
+    public void setMes(int mes) {
         this.mes = mes;
     }
 
-    private void setAno(int ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 }
