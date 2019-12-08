@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class TelaCadastro extends javax.swing.JFrame {
 
+    private Utilizador user;
+    
     /**
      * Creates new form TelaCadastro
      */
@@ -24,6 +26,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         nomeerromsg3.hide();
         nomeerromsg4.hide();
         jLabel8.hide();
+        user = new Utilizador();
     }
 
     /**
@@ -100,6 +103,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         jLabel7.setText("Validade");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("<");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -192,11 +201,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 151, Short.MAX_VALUE))
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(25, 194, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +215,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,9 +251,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addGap(3, 3, 3)
                 .addComponent(jButton1)
                 .addGap(42, 42, 42))
         );
@@ -286,7 +293,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         String Email = jTextField2.getText();
         String Senha = new String(jPasswordField1.getPassword());
         String nCartao = jTextField4.getText();
-        String CSV = jTextField3.getText();
+        String CVC = jTextField3.getText();
         //String Validade = 
         String Mes = jTextField5.getText();
         String Ano = jTextField6.getText();
@@ -300,46 +307,51 @@ public class TelaCadastro extends javax.swing.JFrame {
         nomeerromsg4.hide();
         jLabel8.hide();
         
-        if(!Utilizador.Checknome(nome)){
+        if(!user.Checknome(nome)){
             nomeerromsg.show();
             allvalid = false;
-    }
-        if(!Utilizador.CheckPassword(Senha)){
+        }
+        
+        if(!user.CheckPassword(Senha)){
              nomeerromsg2.show();
              allvalid = false;
         }
         
-        if(!Utilizador.CheckEmail(Email)){
+        if(!user.CheckEmail(Email)){
            nomeerromsg1.show();
            allvalid = false;
         }
         
-        if(!Utilizador.ChecknCartao(nCartao)){
+        if(!user.ChecknCartao(nCartao)){
             nomeerromsg3.show();
             allvalid = false;
         }
         
-        if(!Utilizador.CheckCSV(CSV)){
+        if(!user.CheckCVC(CVC)){
             nomeerromsg4.show();
             allvalid = false;
         }
         
-        if(!Utilizador.CheckData(Mes, Ano)){
+        if(!user.CheckData(Mes, Ano)){
             jLabel8.show();
             allvalid = false;
         }
         
-      
         if (allvalid){
             JOptionPane.showMessageDialog(null, "Bem vindo");
             
+            user.setNomeCompleto(nome);
+            user.setPassword(Senha);
+            user.setEmail(Email);
+            user.setNumCartao(nCartao);
+            user.setCVC(CVC);
+            user.setValidade(new Data(Integer.parseInt(Mes), Integer.parseInt(Ano)));
+
             TelaMenu menu = new TelaMenu();
+            menu.setUtilizador(user);
             menu.setVisible(true);
             dispose();
-              
-           
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -349,6 +361,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
     
 
     /**
@@ -379,10 +395,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastro().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaCadastro().setVisible(true);
         });
     }
 

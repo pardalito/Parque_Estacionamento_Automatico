@@ -18,6 +18,10 @@ final class Data {
         this.mes = mes;
         this.ano = ano;
     }
+    
+    public Data(){
+        
+    }
 
     public int getMes() {
         return mes;
@@ -27,39 +31,44 @@ final class Data {
         return ano;
     }
 
-    private void setMes(int mes, int ano) {
+    public void setMes(int mes) {
         this.mes = mes;
     }
 
-    private void setAno(int ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 }
 
 public class Utilizador {
     static final int passMin = 8, passMax = 25, nomeMin = 10, nomeMax = 80;
-    private String csv;
+    private String cvc;
     private String num_cartao;
     private Data validade;
     private String nome_completo;
     private String email;
     private String password;
     private ArrayList<Carro> carros;
+    
+    private boolean checkbox;
 
-    public Utilizador(String nome_completo, String email, String password, String num_cartao, String csv, Data validade) {
+    public Utilizador(String nome_completo, String email, String password, String num_cartao, String csv, String mes, String ano) {
         this.nome_completo = nome_completo;
         this.email = email;
         this.password = password;
         this.num_cartao = num_cartao;
-        this.csv = csv;
-        this.validade = validade;
+        this.cvc = cvc;
+        this.validade = new Data(Integer.parseInt(mes) , Integer.parseInt(ano));
+    }
+
+    Utilizador() {
     }
 
         /**
      * @return the csv
      */
-    public String getCsv() {
-        return csv;
+    public String getCVC() {
+        return cvc;
     }
     
     /**
@@ -107,12 +116,12 @@ public class Utilizador {
     /**
      * @param csv the csv to set
      */
-    public void setCsv(String csv) {
-        this.csv = csv;
+    public void setCVC(String cvc) {
+        this.cvc = cvc;
     }
 
     /**
-     * @param num_cartao the num_cartao to set
+     * @param numC
      */
     public void setNumCartao(String numC) {
         num_cartao = numC;
@@ -128,7 +137,6 @@ public class Utilizador {
 
     /**
      * @param nome
-     * @param nome_completo the nome_completo to set
      */
     public void setNomeCompleto(String nome) {
         this.nome_completo = nome;
@@ -162,7 +170,7 @@ public class Utilizador {
     * Verificaçoes
     *
      */
-    public static boolean CheckPassword(String password) {
+    public boolean CheckPassword(String password) {
         if (password == null) {
             return false;
         }
@@ -184,7 +192,7 @@ public class Utilizador {
         return true;
     }
 
-    public static boolean CheckEmail(String email) {
+    public boolean CheckEmail(String email) {
         if (email == null) {
             return false;
         }
@@ -194,7 +202,7 @@ public class Utilizador {
         return m.matches();
     }
 
-    public static boolean Checknome(String nome) {
+    public boolean Checknome(String nome) {
         if (nome == null) {
             return false;
         }
@@ -213,25 +221,24 @@ public class Utilizador {
         return true;
     }
 
-    public static boolean ChecknCartao(String ncartao) {
+    public boolean ChecknCartao(String ncartao) {
         if (ncartao == null) {
             return false;
         }
         return (ncartao.matches("[0-9]+") && ncartao.length() == 16);
     }
 
-    public static boolean CheckCSV(String csv) {
-        if (csv == null) {
+    public boolean CheckCVC(String cvc) {
+        if (cvc == null) {
             return false;
         }
-        return (csv.matches("[0-9]+") && csv.length() == 3);
+        return (cvc.matches("[0-9]+") && cvc.length() == 3);
     }
     
-    public static boolean CheckData(String mes, String ano) {
+    public boolean CheckData(String mes, String ano) {
         
         if(mes == null || ano == null || (!mes.matches("[0-9]+") && mes.length() != 2) || (!ano.matches("[0-9]+") && ano.length() != 4))
-            return false;
-        
+            return false;      
         Calendar cal = Calendar.getInstance();
         
         int mes1 = Integer.parseInt(mes);
@@ -245,6 +252,20 @@ public class Utilizador {
             }
         }
         return true;
+    }
+
+    /**
+     * @return the checkbox
+     */
+    public boolean isCheckbox() {
+        return checkbox;
+    }
+
+    /**
+     * @param checkbox the checkbox to set
+     */
+    public void setCheckbox(boolean checkbox) {
+        this.checkbox = checkbox;
     }
 
 }

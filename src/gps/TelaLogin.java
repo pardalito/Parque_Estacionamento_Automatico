@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+//import javafx.scene.control.CheckBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,9 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JDialog {
 
+    private Utilizador user;
+    private String nome = "", pass = "";
+    
     /**
      * Creates new form MyGUI
      */
@@ -30,6 +34,13 @@ public class TelaLogin extends javax.swing.JDialog {
     }
     public TelaLogin() {
         initComponents();
+        user = new Utilizador();
+    }
+    
+    public void setUtilizador(Utilizador user){
+        this.user = user;
+        if(user.isCheckbox())
+            txtLogin.setText(user.getNome_completo());
     }
 
     /**
@@ -186,21 +197,9 @@ public class TelaLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        /*if (txtLogin.getText().equals("josescalco")&&txtSenha.getText().equals("1234")){
-            JOptionPane.showMessageDialog(null,"Bem-vindo!");
-    
-        //Likando com a tela menu
-        TelaMenu menu = new TelaMenu ();
-        menu.setVisible(true);   
-        dispose();
-           
-        }
-        else {
-            JOptionPane.showMessageDialog(null,"Acesso Negado.");  
-        }*/
+      
         //escrever no ficheiro apagar no fim
-        String str = "Pedro 1234\nZe 5678";
+        String str = "Pedro Batalha\n12345678\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim\nZe Martins\nqwerty\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim";
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter("bd.txt"));
@@ -220,52 +219,93 @@ public class TelaLogin extends javax.swing.JDialog {
             if(bd.length()==0)
                 JOptionPane.showMessageDialog(null,"Nao existem utilizadores  registados");
             int x = 0;
-            while(scan.hasNextLine()){
-                String info = scan.nextLine();
-                String nome ="",pass="";
-                int i;
-                //guardar nome
-                for(i=0;i<info.length() && info.charAt(i)!=' ';i++)
-                    if(info.charAt(i)!=' ')
-                        nome+=info.charAt(i);   
-                //guardar pass
-                for(;i<info.length();i++)
-                    if(info.charAt(i)!=' ')
-                        pass+=info.charAt(i);
-
+            //le do ficheiro a procura do utilizador
+            while(scan.hasNextLine()&& x==0){
+                String nome = scan.nextLine();
+                String pass = scan.nextLine();
                 //teste
-                //JOptionPane.showMessageDialog(null,str+"\n"+nome+"\n"+pass);
-
+                //JOptionPane.showMessageDialog(null,nome+"\n"+pass);
                 //validaçao
                 if(txtLogin.getText().equals(nome)&&txtSenha.getText().equals(pass)){
+                    
+                    //utilizador encontrado
+                    String email=scan.nextLine();
+                    String data = scan.nextLine();
+                    //data
+                    int i=0;
+                    String mes="",ano="";
+                    for(;data.charAt(i)!=' ';i++)
+                        mes+=data.charAt(i);
+                    for(;i<data.length();i++)
+                        ano+=data.charAt(i);
+                    
+                    /*Data val = new Data();
+                    val.setAno(Integer.parseInt(mes));
+                    val.setAno(Integer.parseInt(ano));
+                    */
+                    JOptionPane.showMessageDialog(null,"ola");
+                    String num_cart=scan.nextLine();
+                    String cvc=scan.nextLine();
+                    
+                    /*while(true){
+                        String matricula=scan.nextLine();
+                        if(matricula=="fim")
+                            break;
+                        String modelo=scan.nextLine();
+                        String marca=scan.nextLine();
+                    }*/
+                    
+                    //criar user
+                    user.setCVC(cvc);
+                    user.setEmail(email);
+                    user.setNomeCompleto(nome);
+                    user.setNumCartao(num_cart);
+                    user.setPassword(pass);
+                    //user.setValidade(val);
                     x=1;
+                    JOptionPane.showMessageDialog(null,"Login efetuado");
+                    //Likando com a tela menu
+                    TelaMenu menu = new TelaMenu ();
+                    menu.setUtilizador(user);
+                    menu.setVisible(true);   
+                    dispose();
                     break;
                 }else
-                    x=0;
+                    //ainda nao encontrou o utilizador
+                    if(x==0)
+                        x=0;
+                    String lixo;
+                    do{
+                        lixo=scan.nextLine();
+                    }while(!lixo.equals("fim"));
             }
+            
             if(x==1){
-                JOptionPane.showMessageDialog(null,"Login efetuado");
+                /*JOptionPane.showMessageDialog(null,"Login efetuado");
                 //Likando com a tela menu
                 TelaMenu menu = new TelaMenu ();
                 menu.setVisible(true);   
-                dispose(); 
+                dispose();*/
             }else
                 JOptionPane.showMessageDialog(null,"Dados incorretos");   
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
+        if(jCheckBox1.isSelected())
+            user.setCheckbox(true);
+        else
+            user.setCheckbox(false);
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
