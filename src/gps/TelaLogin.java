@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -199,7 +200,7 @@ public class TelaLogin extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
         //escrever no ficheiro apagar no fim
-        String str = "Pedro Batalha\n12345678\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim\nZe Martins\nqwerty\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim";
+        String str = "Pedro Batalha\n12345678\nemail@hotmail.com\n3 2020\n1234567812345678\n123\n12-AB-34\na3\nbmw\nfim\n2/7/12/2019 10\nfim\nZe Martins\nqwerty\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim\nfim";
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter("bd.txt"));
@@ -238,17 +239,28 @@ public class TelaLogin extends javax.swing.JDialog {
                         mes+=data.charAt(i);
                     for(;i<data.length();i++)
                         ano+=data.charAt(i);
-                    JOptionPane.showMessageDialog(null,"ola");
                     String num_cart=scan.nextLine();
                     String cvc=scan.nextLine();
                     
-                    /*while(true){
+                    //carros
+                    ArrayList<Carro> carros = new ArrayList<Carro>();
+                    while(true){
                         String matricula=scan.nextLine();
-                        if(matricula=="fim")
+                        if(matricula.equals("fim"))
                             break;
                         String modelo=scan.nextLine();
                         String marca=scan.nextLine();
-                    }*/
+                        carros.add(new Carro(marca,modelo,matricula));
+                    }
+                    
+                    //pagamentos
+                    ArrayList<String> pagamentos = new ArrayList<String>();
+                    while(true){
+                        String pagamento=scan.nextLine();
+                        if(pagamento.equals("fim"))
+                            break;
+                        pagamentos.add(pagamento);
+                    }
                     
                     //criar user
                     user.setCVC(cvc);
@@ -257,6 +269,8 @@ public class TelaLogin extends javax.swing.JDialog {
                     user.setNumCartao(num_cart);
                     user.setPassword(pass);
                     user.setValidade(mes,ano);
+                    user.setCarros(carros);
+                    user.setPagamentos(pagamentos);
                     x=1;
                     JOptionPane.showMessageDialog(null,"Login efetuado");
                     //Likando com a tela menu
@@ -270,6 +284,9 @@ public class TelaLogin extends javax.swing.JDialog {
                     if(x==0)
                         x=0;
                     String lixo;
+                    do{
+                        lixo=scan.nextLine();
+                    }while(!lixo.equals("fim"));
                     do{
                         lixo=scan.nextLine();
                     }while(!lixo.equals("fim"));

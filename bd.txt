@@ -4,6 +4,11 @@ email@hotmail.com
 3 2020
 1234567812345678
 123
+12-AB-34
+a3
+bmw
+fim
+2/7/12/2019 10
 fim
 Ze Martins
 qwerty
@@ -11,4 +16,5 @@ email@hotmail.com
 3 2020
 1234567812345678
 123
+fim
 fim

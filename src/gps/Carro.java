@@ -3,19 +3,22 @@ package gps;
 public final class Carro {
 
     private final String marca;
-    
     private final String modelo;
     private String matricula;
-    private Utilizador utilizador;
     
-    public Carro(String marca, String modelo, String matricula, Utilizador utilizador){
+    //private Utilizador utilizador; //o utilizador é que tem carros nao o contrario
+    
+    public Carro(String marca, String modelo, String matricula){
         this.marca = marca;
         this.modelo = modelo;
+        this.matricula = matricula;
+        //fazer verificações antes de enviar para o construtor
+        /*
         if(setMatricula(matricula) == false){
             System.out.println("Matricula incorreta");
             System.exit(0);
         }
-        this.utilizador = utilizador;
+        */
     }
     
     public boolean setMatricula(String matricula){
@@ -65,6 +68,7 @@ public final class Carro {
     public final String getModelo(){
         return modelo;
     }
+    /*
     public final Utilizador getUtilizador(){
         return utilizador;
     }
@@ -72,4 +76,5 @@ public final class Carro {
     public void setUtilizador(Utilizador uti){
         this.utilizador = uti;
     }
+    */
 }

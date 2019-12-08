@@ -50,10 +50,11 @@ public class Utilizador {
     private String email;
     private String password;
     private ArrayList<Carro> carros;
+    private ArrayList<String> pagamentos;
     
     private boolean checkbox;
 
-    public Utilizador(String nome_completo, String email, String password, String num_cartao, String cvc, String mes, String ano) {
+    public Utilizador(String nome_completo, String email, String password, String num_cartao, String cvc, String mes, String ano,ArrayList<Carro> carros, ArrayList<String> pagamentos) {
         this.nome_completo = nome_completo;
         this.email = email;
         this.password = password;
@@ -61,6 +62,8 @@ public class Utilizador {
         this.cvc = cvc;
         this.mes=mes;
         this.ano=ano;
+        this.carros=carros;
+        this.pagamentos=pagamentos;
     }
 
     Utilizador() {
@@ -174,6 +177,10 @@ public class Utilizador {
      */
     public void setCarros(ArrayList<Carro> carros) {
         this.carros = carros;
+    }
+    
+    public void setPagamentos(ArrayList<String> pagamentos) {
+        this.pagamentos = pagamentos;
     }
 
     /*
