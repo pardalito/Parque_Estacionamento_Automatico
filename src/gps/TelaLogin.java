@@ -21,6 +21,8 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JDialog {
 
+    private Utilizador user;
+    
     /**
      * Creates new form MyGUI
      */
@@ -30,6 +32,7 @@ public class TelaLogin extends javax.swing.JDialog {
     }
     public TelaLogin() {
         initComponents();
+        user = new Utilizador();
     }
 
     /**
@@ -199,8 +202,11 @@ public class TelaLogin extends javax.swing.JDialog {
         else {
             JOptionPane.showMessageDialog(null,"Acesso Negado.");  
         }*/
-        //escrever no ficheiro apagar no fim
-        String str = "Pedro 1234\nZe 5678";
+        //escrever no ficheiro apagar no fim        SO PODE AQUI ESTAR POR ENQUANTO,
+                                                    //QUANDO VOLTARMOS A REGRAVAR OS DADOS DUMA SESSAO 
+                                                    //ISTO IA ESTAR A REESCREVER OS NOVOS UTILIZADORES
+                                                    //CRIADOS EM SESSOES ANTERIORES
+        String str = "Pedro 1234\nZe 5678\nJP 1234\nScalco 1234\nJV 1234";
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter("bd.txt"));
@@ -208,7 +214,7 @@ public class TelaLogin extends javax.swing.JDialog {
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }                                           //--------------------------------------------------- ate aqui
             
         //ler do ficheiro
         File bd = new File("bd.txt");
@@ -239,14 +245,23 @@ public class TelaLogin extends javax.swing.JDialog {
                 //validaçao
                 if(txtLogin.getText().equals(nome)&&txtSenha.getText().equals(pass)){
                     x=1;
+                    
+                    //LER AGORA O RESTO DA INFO DO UTILIZADOR DO FICHEIRO !!!
+                    
                     break;
                 }else
                     x=0;
             }
             if(x==1){
                 JOptionPane.showMessageDialog(null,"Login efetuado");
+                
+
+                //DAR SETS PARA COLOCAR INFO DO USER NA CLASSE !!!
+                
+                
                 //Likando com a tela menu
                 TelaMenu menu = new TelaMenu ();
+                menu.setUtilizador(user);
                 menu.setVisible(true);   
                 dispose(); 
             }else
