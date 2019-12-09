@@ -28,6 +28,8 @@ public class TelaLogin extends javax.swing.JDialog {
     
     /**
      * Creates new form MyGUI
+     * @param parent
+     * @param modal
      */
     public TelaLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -243,7 +245,7 @@ public class TelaLogin extends javax.swing.JDialog {
                     String cvc=scan.nextLine();
                     
                     //carros
-                    ArrayList<Carro> carros = new ArrayList<Carro>();
+                    ArrayList<Carro> carros = new ArrayList<>();
                     while(true){
                         String matricula=scan.nextLine();
                         if(matricula.equals("fim"))
@@ -254,7 +256,7 @@ public class TelaLogin extends javax.swing.JDialog {
                     }
                     
                     //pagamentos
-                    ArrayList<String> pagamentos = new ArrayList<String>();
+                    ArrayList<String> pagamentos = new ArrayList<>();
                     while(true){
                         String pagamento=scan.nextLine();
                         if(pagamento.equals("fim"))
@@ -355,17 +357,15 @@ public class TelaLogin extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                TelaLogin dialog = new TelaLogin(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            TelaLogin dialog = new TelaLogin(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
