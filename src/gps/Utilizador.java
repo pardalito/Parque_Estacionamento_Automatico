@@ -68,6 +68,7 @@ public class Utilizador {
 
     Utilizador() {
         carros = new ArrayList<>();
+        pagamentos = new ArrayList<>();
     }
 
         /**
@@ -75,6 +76,10 @@ public class Utilizador {
      */
     public String getCVC() {
         return cvc;
+    }
+    
+    public ArrayList<String> getPagamentos(){
+        return pagamentos;
     }
     
     /**
