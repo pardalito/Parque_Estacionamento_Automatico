@@ -6,7 +6,6 @@ public class GPS {
         TelaLogin login = new TelaLogin();
         login.setVisible(true);
         Parque p1 = new Parque();
-        p1.imprime();
     }
     
 }
