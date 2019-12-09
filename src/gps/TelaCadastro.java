@@ -287,7 +287,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
     
-    //Botao salvarr
+    //Botao salvar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nome = jTextField1.getText();
         String Email = jTextField2.getText();
