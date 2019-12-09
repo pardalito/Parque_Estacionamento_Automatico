@@ -5,6 +5,14 @@
  */
 package gps;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -335,6 +343,61 @@ public class TelaCadastro extends javax.swing.JFrame {
         if(!user.CheckData(Mes, Ano)){
             jLabel8.show();
             allvalid = false;
+        }
+        
+        //escrever no ficheiro apagar no fim
+        String str = "Pedro Batalha\n12345678\nemail@hotmail.com\n3 2020\n1234567812345678\n123\n12-AB-34\na3\nbmw\nfim\n2/7/12/2019 10\nfim\nZe Martins\nqwerty\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim\nfim";
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter("bd.txt"));
+            writer.write(str);
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //verificar repetiçoes
+        File bd = new File("bd.txt");
+        try {
+            Scanner scan = new Scanner(bd);
+            if(bd==null){
+                JOptionPane.showMessageDialog(null,"Erro ao abrir o ficheiro");
+                allvalid = false;
+            }
+            if(bd.length()!=0){
+                while(scan.hasNextLine()){
+                    String fnome=scan.nextLine();
+                    if(nome.equals(fnome)){
+                        JOptionPane.showMessageDialog(null,"Nome ja utilizado");
+                        allvalid = false;
+                        break;
+                    }
+                    String lixo=scan.nextLine();
+                    String femail=scan.nextLine();
+                    if(Email.equals(femail)){
+                        JOptionPane.showMessageDialog(null,"Email ja utilizado");
+                        allvalid = false;
+                        break;
+                    }
+                    lixo=scan.nextLine();
+                    String fnum_cart=scan.nextLine();
+                    if(nCartao.equals(fnum_cart)){
+                        JOptionPane.showMessageDialog(null,"cartao ja utilizado");
+                        allvalid = false;
+                        break;
+                    }
+                    //passa para o proximo utilizador
+                    do{
+                        lixo=scan.nextLine();
+                    }while(!lixo.equals("fim"));
+                    do{
+                        lixo=scan.nextLine();
+                    }while(!lixo.equals("fim"));
+                }
+            }
+                
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         if (allvalid){
