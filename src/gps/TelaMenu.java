@@ -117,7 +117,7 @@ public class TelaMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(189, 189, 189)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -146,7 +146,7 @@ public class TelaMenu extends javax.swing.JFrame {
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,12 +155,10 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("Nome: "+user.getNome_completo()+"\nEmail: "+user.getEmail()+"\nPassword: "+user.getPassword());
-        if(user.getValidade() == null)
-        System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade());
-        else
-        System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade());
-        for(Carro i : user.getCarros()) System.out.println("Carro: "+i.getMarca()+" - "+i.getModelo()+" - "+i.getMatricula());
+        TelaVisualizarPagamentos VisualizarPagamentos = new TelaVisualizarPagamentos();
+        VisualizarPagamentos.setUtilizador(user);
+        VisualizarPagamentos.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
