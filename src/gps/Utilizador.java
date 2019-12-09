@@ -67,6 +67,7 @@ public class Utilizador {
     }
 
     Utilizador() {
+        carros = new ArrayList<>();
     }
 
         /**

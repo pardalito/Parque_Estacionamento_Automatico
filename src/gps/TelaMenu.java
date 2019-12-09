@@ -19,6 +19,7 @@ public class TelaMenu extends javax.swing.JFrame {
     public TelaMenu() {
         initComponents();
         user = new Utilizador(); //está vazio para propósitos de teste
+        //jLabel2.setText(user.getNome_completo());
     }
     
     public void setUtilizador(Utilizador user){
@@ -41,6 +42,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Parque de Estacionamento Automático");
@@ -98,6 +100,8 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,6 +109,8 @@ public class TelaMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(24, 24, 24))
@@ -128,7 +134,8 @@ public class TelaMenu extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jLabel2))
                 .addGap(73, 73, 73)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -153,6 +160,7 @@ public class TelaMenu extends javax.swing.JFrame {
         System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade());
         else
         System.out.println("N_Cartão: "+user.getNum_cartao()+"\nCVC: "+user.getCVC()+"\nData de Validade: "+user.getValidade());
+        for(Carro i : user.getCarros()) System.out.println("Carro: "+i.getMarca()+" - "+i.getModelo()+" - "+i.getMatricula());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -231,5 +239,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
