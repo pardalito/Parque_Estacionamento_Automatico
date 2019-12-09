@@ -314,7 +314,16 @@ public class MudarPagamentos extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         
-        boolean allvalid = true;
+        boolean num_ok = true;
+        boolean cvc_ok = true;
+        boolean mes_ok = true;
+        boolean ano_ok = true;
+        
+        
+        n_cartao = "";
+        cvc = "";
+        mes = "";
+        ano = "";
         
         n_cartao = jTextField1.getText();
         cvc = jTextField2.getText();
@@ -322,37 +331,43 @@ public class MudarPagamentos extends javax.swing.JFrame {
         ano = jTextField4.getText();
         
         
-        msgerroCVC.hide();
-        msgerroCartao.hide();
-        msgerroValidade.hide();
-        sucesso.hide();
+        msgerroCVC.setVisible(false);
+        msgerroCartao.setVisible(false);
+        msgerroValidade.setVisible(false);
+        sucesso.setVisible(false);
 
         
-        if(!user.ChecknCartao(n_cartao)){
-            msgerroCartao.show();
-            allvalid = false;
+        if(!user.ChecknCartao(n_cartao) && n_cartao.length() != 0){
+            msgerroCartao.setVisible(true);
+            num_ok = false;
         }
             
-        if(!user.CheckCVC(cvc)){
-            msgerroCVC.show();
-            allvalid = false;
+        if(!user.CheckCVC(cvc) && cvc.length() != 0){
+            msgerroCVC.setVisible(true);
+            cvc_ok = false;
         }
             
-        if(!user.CheckData(mes,ano)){
-            msgerroValidade.show();
-            allvalid = false;
+        if(!user.CheckData(mes,ano) && (mes.length() != 0 || ano.length() != 0)){
+            msgerroValidade.setVisible(true);
+            mes_ok = false;
+            ano_ok = false;
         }
             
 
-        if(allvalid){
+        if(num_ok && n_cartao.length() != 0){
             user.setNumCartao(n_cartao);
-            user.setCVC(cvc);
-            user.setValidade(mes,ano);
-            sucesso.show();
-            //        System.out.println("Numero Cartão: "+user.getNum_cartao());
-            //        System.out.println("CVC: "+user.getCVC());
-            //        System.out.println("Data de Validade: "+user.getValidade().getMes()+"/"+user.getValidade().getAno());
+            sucesso.setVisible(true);
         }
+        if(cvc_ok && cvc.length() != 0){
+            user.setCVC(cvc);
+            sucesso.setVisible(true);
+        }
+        if(mes_ok && ano_ok && mes.length() != 0 && ano.length() != 0){
+            user.setValidade(mes, ano);
+            sucesso.setVisible(true);
+        }
+        
+            
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed

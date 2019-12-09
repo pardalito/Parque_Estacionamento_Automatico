@@ -12,8 +12,6 @@ package gps;
 public class TelaGestaoConta extends javax.swing.JFrame{
 
     private Utilizador user;
-    private String email;
-    private String password;
     
     /**
      * Creates new form TelaGestaoConta
@@ -106,8 +104,8 @@ public class TelaGestaoConta extends javax.swing.JFrame{
                         .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -287,38 +285,50 @@ public class TelaGestaoConta extends javax.swing.JFrame{
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        boolean allvalid = true;
+        boolean pass_ok = true;
+        boolean email_ok = true;
+        
+        String password = "";
+        String email = "";
         
         email = jTextField1.getText();
         password = jTextField2.getText();
         
         
-        msgerroEmail.hide();
-        msgerroPassword1.hide();
-        msgerroPassword2.hide();
-        sucesso.hide();
+        msgerroEmail.setVisible(false);
+        msgerroPassword1.setVisible(false);
+        msgerroPassword2.setVisible(false);
+        sucesso.setVisible(false);
         
         
-        if(!user.CheckPassword(password)){
-            msgerroPassword1.show();
-            msgerroPassword2.show();
-            allvalid = false;
+        if(!user.CheckPassword(password) && password.length() != 0){
+            msgerroPassword1.setVisible(true);
+            msgerroPassword2.setVisible(true);
+            pass_ok = false;
         }
         
-        if(!user.CheckEmail(email)){
-            msgerroEmail.show();
-            allvalid = false;
+        
+        if(!user.CheckEmail(email) && email.length() != 0){
+            msgerroEmail.setVisible(true);
+            email_ok = false;
         }
         
-        if(allvalid){
-            user.setPassword(password);
+        
+        
+        if(email_ok && email.length() != 0){
             user.setEmail(email);
-            sucesso.show();
+            sucesso.setVisible(true);
         }
-//        System.out.println("Email: "+email);
-//        System.out.println("Password: "+password);
-//        System.out.println("Email: "+user.getEmail());
-//        System.out.println("Password: "+user.getPassword());
+        if(pass_ok && password.length() != 0){
+            user.setPassword(password);
+            sucesso.setVisible(true);
+        }
+        
+            
+        System.out.println("Email: "+email.length());
+        System.out.println("Password: "+password);
+        System.out.println("Email: "+user.getEmail());
+        System.out.println("Password: "+user.getPassword());
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
