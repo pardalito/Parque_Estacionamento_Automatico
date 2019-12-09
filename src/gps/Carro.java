@@ -68,6 +68,40 @@ public final class Carro {
     public final String getModelo(){
         return modelo;
     }
+    
+    public static boolean CheckMatricula(String matricula){
+        if (matricula == null) return false;
+        if (matricula.length() != 8 || matricula.charAt(2) != '-' || matricula.charAt(5) != '-')
+           return false;
+       int numeros = 0, letras = 0;
+
+       for (int i = 0; i < matricula.length(); i++) {
+
+           //verifica se é letra 
+            if (Character.isLetter(matricula.charAt(i))) {
+
+               //verifica se é letra Maiuscula se sim incretenta se não, nao incrementa
+               if (matricula.charAt(i) == (matricula.toUpperCase().charAt(i))) {
+                    ++letras;
+                    continue;
+                }
+            }
+           //verifica se é digito e se sim, incrementa
+            if (Character.isDigit(matricula.charAt(i)))
+                ++numeros;
+           //parte do codigo que valida a condição NN-CC-NN, CC-NN-NN, NN-NN-CC
+            if (i == 2){
+                if (numeros != 2 && letras != 2)
+                    return false;
+            }
+            if (i == 4){
+               if ((numeros != 2 || letras != 2) && (numeros != 4))
+                    return false;
+            }
+        }
+       //verifica se a matricula contem os 4 numeros e 2 letras maiusculas
+       return (numeros == 4 && letras == 2);
+    }
     /*
     public final Utilizador getUtilizador(){
         return utilizador;
