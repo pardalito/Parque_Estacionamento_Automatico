@@ -5,6 +5,8 @@
  */
 package gps;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,24 +23,16 @@ public class TelaVisualizarPagamentos extends javax.swing.JFrame {
     
     public void setUtilizador(Utilizador user){
         this.user = user;
-    }
-    /**
-     * Creates new form TelaVisualizarPagamentos
-     */
-    public TelaVisualizarPagamentos() {
-        initComponents();
         model = (DefaultTableModel) jTable1.getModel();
-        jLabel2.setVisible(false);
-        
-        
         
         if(user.getPagamentos().isEmpty()){
-            //mostrar msg que ñ possui pagamentos
-            jLabel2.setVisible(true);
+        //mostrar msg que ñ possui pagamentos
+        jLabel2.setVisible(true);
         }
         else{
             //mostrar os pagamentos
             for(String c: user.getPagamentos()){
+                spacefind = false;
                 char[] a = c.toCharArray();
                 Data = "";
                 Preco = "";
@@ -53,6 +47,15 @@ public class TelaVisualizarPagamentos extends javax.swing.JFrame {
                  model.insertRow(model.getRowCount(), new Object[]{Data, Preco});
             }
         }
+    }
+    /**
+     * Creates new form TelaVisualizarPagamentos
+     */
+    public TelaVisualizarPagamentos() {
+        initComponents();
+        jLabel2.setVisible(false);
+        
+
         
     }
 

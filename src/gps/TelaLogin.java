@@ -202,7 +202,7 @@ public class TelaLogin extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
         //escrever no ficheiro apagar no fim
-        String str = "Pedro Batalha\n12345678\nemail@hotmail.com\n3 2020\n1234567812345678\n123\n12-AB-34\na3\nbmw\nfim\n2/7/12/2019 10\nfim\nZe Martins\nqwerty\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim\nfim";
+        String str = "Pedro Batalha\n12345678\nemail@hotmail.com\n3 2020\n1234567812345678\n123\n12-AB-34\na3\nbmw\nfim\n2/7/12/2019 10\n9/7/12/2019 10\nfim\nZe Martins\nqwerty\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim\nfim";
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter("bd.txt"));
