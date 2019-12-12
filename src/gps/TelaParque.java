@@ -3,8 +3,12 @@ package gps;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.Timer;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 
 /**
  *
@@ -12,8 +16,12 @@ import javax.swing.Timer;
  */
 public class TelaParque extends javax.swing.JFrame {
 
+    private int SegundoEntrada, MinutoEntrada, SegundoSaida, MinutoSaida;
     public TelaParque() {
         initComponents();
+        Calendar calendar = new GregorianCalendar();
+        MinutoEntrada = calendar.get(Calendar.MINUTE);
+        SegundoEntrada = calendar.get(Calendar.SECOND);
         showDate();
         showTime();
         //getDate();
@@ -29,6 +37,7 @@ public class TelaParque extends javax.swing.JFrame {
     }
     
     void showTime() {
+        int cont=0;
         new Timer(0, (ActionEvent e) -> {
             Date d = new Date();
             SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
@@ -161,7 +170,10 @@ public class TelaParque extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Calendar calendar = new GregorianCalendar();
+        MinutoSaida = calendar.get(Calendar.MINUTE);
+        SegundoSaida = calendar.get(Calendar.SECOND);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
