@@ -163,6 +163,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         TelaParque parque = new TelaParque();
+        parque.setUtilizador(user);
         parque.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed

@@ -15,10 +15,13 @@ import java.util.GregorianCalendar;
  * @author Jose Pedro
  */
 public class TelaParque extends javax.swing.JFrame {
+    
+    Utilizador user;
 
     private int SegundoEntrada, MinutoEntrada, SegundoSaida, MinutoSaida;
     public TelaParque() {
         initComponents();
+        user = new Utilizador();
         Calendar calendar = new GregorianCalendar();
         MinutoEntrada = calendar.get(Calendar.MINUTE);
         SegundoEntrada = calendar.get(Calendar.SECOND);
@@ -28,6 +31,10 @@ public class TelaParque extends javax.swing.JFrame {
         //getTime();
         
 
+    }
+    
+    public void setUtilizador(Utilizador user){
+        this.user = user;
     }
 
     void showDate() {
