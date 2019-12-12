@@ -19,6 +19,7 @@ public class TelaParque extends javax.swing.JFrame {
     Utilizador user;
 
     private int SegundoEntrada, MinutoEntrada, SegundoSaida, MinutoSaida;
+    static final double tarifa = 0.01;
     public TelaParque() {
         initComponents();
         user = new Utilizador();
@@ -178,10 +179,16 @@ public class TelaParque extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int tempo;
+        double preco;
         Calendar calendar = new GregorianCalendar();
         MinutoSaida = calendar.get(Calendar.MINUTE);
         SegundoSaida = calendar.get(Calendar.SECOND);
         tempo = (MinutoSaida * 60 + SegundoSaida) - (MinutoEntrada * 60 + SegundoEntrada);
+        preco = tempo * tarifa;
+        user.AdicionaPagamentos(preco);
+        TelaMenu menu = new TelaMenu();
+        menu.setVisible(true);
+        dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

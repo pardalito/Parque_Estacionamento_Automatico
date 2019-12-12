@@ -188,6 +188,10 @@ public class Utilizador {
     public void setPagamentos(ArrayList<String> pagamentos) {
         this.pagamentos = pagamentos;
     }
+    
+    public void AdicionaPagamentos(double valor){
+        pagamentos.add(String.valueOf(valor));
+    }
 
     /*
     *
