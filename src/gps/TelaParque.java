@@ -170,9 +170,11 @@ public class TelaParque extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int tempo;
         Calendar calendar = new GregorianCalendar();
         MinutoSaida = calendar.get(Calendar.MINUTE);
         SegundoSaida = calendar.get(Calendar.SECOND);
+        tempo = (MinutoSaida * 60 + SegundoSaida) - (MinutoEntrada * 60 + SegundoEntrada);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
