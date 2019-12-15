@@ -5,6 +5,16 @@
  */
 package gps;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Joao
@@ -169,6 +179,69 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        File bd = new File("bd.txt");
+        BufferedWriter writer;
+        String passa;
+        try {
+            Scanner scan = new Scanner(bd);
+            if(bd==null)
+                JOptionPane.showMessageDialog(null,"Erro ao abrir o ficheiro");
+            if(bd.length()==0)
+                JOptionPane.showMessageDialog(null,"Nao existem utilizadores  registados");
+            int x = 0;
+            writer = new BufferedWriter(new FileWriter("temp.txt"));
+            
+            while(scan.hasNextLine()&& x==0){
+                String nome = scan.nextLine();
+                if(nome.equals(user.getNome_completo())){
+                    do{
+                        passa=scan.nextLine();
+                    }while(!passa.equals("fim"));
+                    do{
+                        passa=scan.nextLine();
+                    }while(!passa.equals("fim"));
+                }else{
+                    writer.write(nome+"\n");
+                    do{
+                        passa=scan.nextLine();
+                        writer.write(passa+"\n");
+                    }while(!passa.equals("fim"));
+                    do{
+                        passa=scan.nextLine();
+                        writer.write(passa+"\n");
+                    }while(!passa.equals("fim"));
+                }
+            }
+            writer.write(user.getNome_completo()+"\n");
+            writer.write(user.getPassword()+"\n");
+            writer.write(user.getEmail()+"\n");
+            writer.write(user.getMes()+" "+user.getAno()+"\n");
+            writer.write(user.getNum_cartao()+"\n");
+            writer.write(user.getCVC()+"\n");
+            for(Carro c:user.getCarros()){
+                writer.write(c.getMatricula()+"\n");
+                writer.write(c.getModelo()+"\n");
+                writer.write(c.getMarca()+"\n");
+            }
+            writer.write("fim\n");
+            for(String s:user.getPagamentos())
+                writer.write(s+"\n");
+            writer.write("fim\n");
+            scan.close();
+            bd.delete();
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        File novo = new File("bd.txt");
+        File old = new File("temp.txt");
+        if(!old.renameTo(novo)){
+            JOptionPane.showMessageDialog(null,"ERRO!");
+        }                           
+        
         TelaLogin login = new TelaLogin();
         login.setUtilizador(user);
         login.setVisible(true);

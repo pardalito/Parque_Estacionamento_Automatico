@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -345,17 +346,6 @@ public class TelaCadastro extends javax.swing.JFrame {
             allvalid = false;
         }
         
-        //escrever no ficheiro apagar no fim
-        String str = "Pedro Batalha\n12345678\nemail@hotmail.com\n3 2020\n1234567812345678\n123\n12-AB-34\na3\nbmw\nfim\n2/7/12/2019 10\nfim\nZe Martins\nqwerty\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim\nfim";
-        BufferedWriter writer;
-        try {
-            writer = new BufferedWriter(new FileWriter("bd.txt"));
-            writer.write(str);
-            writer.close();
-        } catch (IOException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         //verificar repetiçoes
         File bd = new File("bd.txt");
         try {
@@ -395,6 +385,8 @@ public class TelaCadastro extends javax.swing.JFrame {
                     }while(!lixo.equals("fim"));
                 }
             }
+            //fecha ficheiro
+            scan.close();
                 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
@@ -409,10 +401,15 @@ public class TelaCadastro extends javax.swing.JFrame {
             user.setNumCartao(nCartao);
             user.setCVC(CVC);
             user.setValidade(Mes,Ano);
+            ArrayList<String> pagamentos = new ArrayList<>();
+            user.setPagamentos(pagamentos);
+            ArrayList<Carro> carros = new ArrayList<>();
+            user.setCarros(carros);
 
-            TelaMenu menu = new TelaMenu();
+            //Likando com a tela menu
+            TelaMenu menu = new TelaMenu ();
             menu.setUtilizador(user);
-            menu.setVisible(true);
+            menu.setVisible(true);   
             dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

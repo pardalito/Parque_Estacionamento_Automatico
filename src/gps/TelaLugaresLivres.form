@@ -96,6 +96,10 @@
           <Image iconType="3" name="/imagens/74836803_2373157206140142_1259084166926958592_n.png"/>
         </Property>
       </Properties>
+      <BindingProperties>
+        <BindingProperty name="background" source="Form" target="jLabel2" targetPath="background" updateStrategy="0" immediately="false"/>
+        <BindingProperty name="labelFor" source="jLabel2" sourcePath="" target="jLabel2" targetPath="labelFor" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
     </Component>
   </SubComponents>
 </Form>

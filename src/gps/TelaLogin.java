@@ -201,17 +201,6 @@ public class TelaLogin extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
-        //escrever no ficheiro apagar no fim
-        String str = "Pedro Batalha\n12345678\nemail@hotmail.com\n3 2020\n1234567812345678\n123\n12-AB-34\na3\nbmw\nfim\n2/7/12/2019 10\n9/7/12/2019 10\nfim\nZe Martins\nqwerty\nemail@hotmail.com\n3 2020\n1234567812345678\n123\nfim\nfim";
-        BufferedWriter writer;
-        try {
-            writer = new BufferedWriter(new FileWriter("bd.txt"));
-            writer.write(str);
-            writer.close();
-        } catch (IOException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
         //ler do ficheiro
         File bd = new File("bd.txt");
         
@@ -275,6 +264,7 @@ public class TelaLogin extends javax.swing.JDialog {
                     user.setPagamentos(pagamentos);
                     x=1;
                     JOptionPane.showMessageDialog(null,"Login efetuado");
+                    scan.close();
                     //Likando com a tela menu
                     TelaMenu menu = new TelaMenu ();
                     menu.setUtilizador(user);
@@ -301,7 +291,7 @@ public class TelaLogin extends javax.swing.JDialog {
                 menu.setVisible(true);   
                 dispose();*/
             }else
-                JOptionPane.showMessageDialog(null,"Dados incorretos");   
+                JOptionPane.showMessageDialog(null,"Dados incorretos");  
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
