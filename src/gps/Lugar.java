@@ -13,11 +13,23 @@ public class Lugar {
     String Nome;
     boolean Livre;
     int Qualidade;
+
+
     
     
-    void Lugar(String nome, String livre, String qualidade){
+    Lugar(String nome, String livre, String qualidade){
         this.Nome = nome;
         this.Livre = livre.compareTo("l")==0;
         this.Qualidade = Integer.parseInt(qualidade);    
+    }
+    
+    public int getQualidade(){
+        return Qualidade;
+    }
+    public String getNome(){
+        return Nome;
+    }
+    public boolean isLivre(){
+        return Livre;
     }
 }
