@@ -1,14 +1,65 @@
 
 package gps;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 
 public class Parque {
-    private String[][] lug;
+    private ArrayList<Lugar> lugares;
     
-    public Parque(){
-        lug = new String[][] {{"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13"}, {"B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "B11", "B12", "B13"}, 
-            {"C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C11", "C12", "C13"}, {"D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D13"}, 
-        {"E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10", "E11", "E12", "E13"}, {"F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"}};   
+    public Parque() throws FileNotFoundException{
+        File bd = new File("bdparque.txt");
+        
+        Scanner scan = new Scanner(bd);
+        
+        
+        while(scan.hasNextLine()){
+            String nome = scan.nextLine();
+            String livre = scan.nextLine();
+            String qualidade = scan.nextLine();
+            lugares.add(new Lugar(nome, livre, qualidade));
+        }
     }
+    
+    public String MelhoresLugares(){
+        String tresmelhores = "";
+        String primeiro = ""; int PrimQ = 0;
+        String segundo = ""; int SecQ = 0;
+        String terceiro = ""; int TerQ = 0;
+        
+        for(Lugar c: lugares){
+            if(c.isLivre()){
+                if(c.getQualidade()>TerQ){
+                    if(c.getQualidade()>SecQ){
+                        if(c.getQualidade()>PrimQ){
+                            terceiro = segundo;
+                            TerQ = SecQ;
+                            segundo = primeiro;
+                            SecQ = PrimQ;
+                            primeiro = c.getNome();
+                            PrimQ = c.getQualidade();
+                        }else{
+                            terceiro = segundo;
+                            TerQ = SecQ;
+                            segundo = c.getNome();
+                            SecQ = c.getQualidade();
+                            
+                        }
+                    }else{
+                        terceiro = c.getNome();
+                        TerQ = c.getQualidade();
+                    }
+                }
+            }
+            
+        }
+        tresmelhores += primeiro; tresmelhores += " "; tresmelhores += segundo; tresmelhores += " "; tresmelhores += terceiro;
+        return tresmelhores;
+        
+    }
+    
 }
