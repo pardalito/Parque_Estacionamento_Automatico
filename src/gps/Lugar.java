@@ -17,11 +17,17 @@ public class Lugar {
 
     
     
-    Lugar(String nome, String livre, String qualidade){
+    Lugar(String nome, String livre, int qualidade){
+        if(nome == null || livre == null){
+            this.Nome = "default";
+            this.Livre = false;
+            this.Qualidade = 0;
+        }else{
         this.Nome = nome;
         this.Livre = livre.compareTo("l")==0;
-        this.Qualidade = Integer.parseInt(qualidade);    
-    }
+        this.Qualidade = qualidade;    
+        }
+        }
     
     public int getQualidade(){
         return Qualidade;

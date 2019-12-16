@@ -5,24 +5,39 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
 public class Parque {
     private ArrayList<Lugar> lugares;
     
-    public Parque() throws FileNotFoundException{
+    public Parque(){
+        lugares = new ArrayList<>();
         File bd = new File("bdparque.txt");
         
-        Scanner scan = new Scanner(bd);
+        Scanner scan = null;
+        try {
+            scan = new Scanner(bd);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Parque.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         while(scan.hasNextLine()){
+            
             String nome = scan.nextLine();
             String livre = scan.nextLine();
             String qualidade = scan.nextLine();
-            lugares.add(new Lugar(nome, livre, qualidade));
+            
+            if(nome != null || livre != null || qualidade != null){
+                int x = Integer.parseInt(qualidade.trim());
+                lugares.add(new Lugar(nome, livre, x));
+            }
+            
         }
+        scan.close();
     }
     
     public String MelhoresLugares(){

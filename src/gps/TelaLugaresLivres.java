@@ -10,12 +10,14 @@ package gps;
  * @author Jose Pedro
  */
 public class TelaLugaresLivres extends javax.swing.JFrame {
-
+     
     /**
      * Creates new form TelaLugaresLivres
      */
     public TelaLugaresLivres() {
         initComponents();
+        Parque c = new Parque();
+        
     }
 
     /**
