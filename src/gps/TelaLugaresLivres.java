@@ -14,11 +14,13 @@ import javax.swing.table.DefaultTableModel;
 public class TelaLugaresLivres extends javax.swing.JFrame {
      DefaultTableModel model;
      private ArrayList<Lugar> aux;
+     private Utilizador user;
     /**
      * Creates new form TelaLugaresLivres
      */
     public TelaLugaresLivres() {
         initComponents();
+        user = new Utilizador();
         Parque c = new Parque();
         aux = new ArrayList<>();
         aux = c.getPagamentos();
@@ -28,6 +30,10 @@ public class TelaLugaresLivres extends javax.swing.JFrame {
          model.insertRow(model.getRowCount(), new Object[]{String.valueOf(i+1), aux.get(i).isLivre(), aux.get(i+13).isLivre(), aux.get(i+26).isLivre(), aux.get(i+39).isLivre(), aux.get(i+52).isLivre()});
          }
         
+    }
+    
+    public void setUtilizador(Utilizador user){
+        this.user = user;
     }
 
     /**
@@ -127,6 +133,7 @@ public class TelaLugaresLivres extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
+        menu.setUtilizador(user);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

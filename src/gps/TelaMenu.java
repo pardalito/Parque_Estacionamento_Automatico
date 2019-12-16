@@ -258,12 +258,14 @@ public class TelaMenu extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         TelaMelhoresLugares melhorlugar = new TelaMelhoresLugares();
         melhorlugar.setVisible(true);
+        melhorlugar.setUtilizador(user);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         TelaLugaresLivres lugaresLivres = new TelaLugaresLivres();
         lugaresLivres.setVisible(true);
+        lugaresLivres.setUtilizador(user);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

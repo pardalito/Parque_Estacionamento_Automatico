@@ -10,12 +10,13 @@ package gps;
  * @author Jose Pedro - alteração teste
  */
 public class TelaMelhoresLugares extends javax.swing.JFrame {
-
+    private Utilizador user;
     /**
      * Creates new form TelaMelhoresLugares
      */
     public TelaMelhoresLugares() {
         initComponents();
+        user = new Utilizador();
         Parque c = new Parque();
         String melhores = c.MelhoresLugares();
         String primeiro = "";
@@ -32,6 +33,10 @@ public class TelaMelhoresLugares extends javax.swing.JFrame {
         jButton3.setText(primeiro);
         jButton4.setText(segundo);
         jButton1.setText(terceiro);
+    }
+    
+    public void setUtilizador(Utilizador user){
+        this.user = user;
     }
 
     /**
@@ -112,6 +117,7 @@ public class TelaMelhoresLugares extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
+        menu.setUtilizador(user);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
