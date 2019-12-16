@@ -16,6 +16,22 @@ public class TelaMelhoresLugares extends javax.swing.JFrame {
      */
     public TelaMelhoresLugares() {
         initComponents();
+        Parque c = new Parque();
+        String melhores = c.MelhoresLugares();
+        String primeiro = "";
+        String segundo = "";
+        String terceiro = "";
+        char[] a = melhores.toCharArray();
+        primeiro += a[0];
+        primeiro += a[1];
+        segundo += a[3];
+        segundo += a[4];
+        terceiro += a[6];
+        terceiro += a[7];
+        
+        jButton3.setText(primeiro);
+        jButton4.setText(segundo);
+        jButton1.setText(terceiro);
     }
 
     /**
