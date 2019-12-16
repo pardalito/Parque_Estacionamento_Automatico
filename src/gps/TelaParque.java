@@ -23,6 +23,13 @@ public class TelaParque extends javax.swing.JFrame {
     public TelaParque() {
         initComponents();
         user = new Utilizador();
+        Parque c = new Parque();
+        String melhores = c.MelhoresLugares();
+        char[] a = melhores.toCharArray();
+        String melhor = "";
+        melhor += a[0];
+        melhor += a[1];
+        jTextField1.setText(melhor);
         Calendar calendar = new GregorianCalendar();
         MinutoEntrada = calendar.get(Calendar.MINUTE);
         SegundoEntrada = calendar.get(Calendar.SECOND);
@@ -179,6 +186,7 @@ public class TelaParque extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String Pagamento = "";
         int tempo;
         double preco;
         Calendar calendar = new GregorianCalendar();
@@ -186,9 +194,17 @@ public class TelaParque extends javax.swing.JFrame {
         SegundoSaida = calendar.get(Calendar.SECOND);
         tempo = (MinutoSaida * 60 + SegundoSaida) - (MinutoEntrada * 60 + SegundoEntrada);
         preco = tempo * tarifa;
-        user.AdicionaPagamentos(preco);
+        
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+        Pagamento += s.format(d);
+        Pagamento += " ";
+        Pagamento += String.valueOf(preco);
+        user.AdicionaPagamentos(Pagamento);
+        
         TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
+        menu.setUtilizador(user);
         dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed

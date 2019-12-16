@@ -204,8 +204,8 @@ public class Utilizador {
         this.edit = edit;
     }
     
-    public void AdicionaPagamentos(double valor){
-        pagamentos.add(String.valueOf(valor));
+    public void AdicionaPagamentos(String valor){
+        pagamentos.add(valor);
     }
 
     /*
