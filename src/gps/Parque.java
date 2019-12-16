@@ -27,9 +27,9 @@ public class Parque {
         
         while(scan.hasNextLine()){
             
-            String nome = scan.nextLine();
-            String livre = scan.nextLine();
-            String qualidade = scan.nextLine();
+            String nome = scan.nextLine().trim();
+            String livre = scan.nextLine().trim();
+            String qualidade = scan.nextLine().trim();
             
             if(nome != null || livre != null || qualidade != null){
                 int x = Integer.parseInt(qualidade.trim());
@@ -47,7 +47,7 @@ public class Parque {
         String terceiro = ""; int TerQ = 0;
         
         for(Lugar c: lugares){
-            if(c.isLivre()){
+            if(c.isLivre().compareTo("livre")==0){
                 if(c.getQualidade()>TerQ){
                     if(c.getQualidade()>SecQ){
                         if(c.getQualidade()>PrimQ){
@@ -75,6 +75,10 @@ public class Parque {
         tresmelhores += primeiro; tresmelhores += " "; tresmelhores += segundo; tresmelhores += " "; tresmelhores += terceiro;
         return tresmelhores;
         
+    }
+    
+    public ArrayList<Lugar> getPagamentos(){
+        return lugares;
     }
     
 }

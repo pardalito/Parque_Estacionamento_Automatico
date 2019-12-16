@@ -11,7 +11,7 @@ package gps;
  */
 public class Lugar {
     String Nome;
-    boolean Livre;
+    String Livre;
     int Qualidade;
 
 
@@ -20,11 +20,14 @@ public class Lugar {
     Lugar(String nome, String livre, int qualidade){
         if(nome == null || livre == null){
             this.Nome = "default";
-            this.Livre = false;
+            this.Livre = "default";
             this.Qualidade = 0;
         }else{
         this.Nome = nome;
-        this.Livre = livre.compareTo("l")==0;
+        if(livre.compareTo("l")==0)
+        this.Livre = "livre";
+        else
+            this.Livre = "ocupado";
         this.Qualidade = qualidade;    
         }
         }
@@ -35,7 +38,7 @@ public class Lugar {
     public String getNome(){
         return Nome;
     }
-    public boolean isLivre(){
+    public String isLivre(){
         return Livre;
     }
 }
