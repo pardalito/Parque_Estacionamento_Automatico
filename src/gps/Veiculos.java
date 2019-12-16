@@ -30,14 +30,26 @@ public class Veiculos extends javax.swing.JFrame {
         //jLabel3.setText(user.getNome_completo());
         sucesso.setVisible(false);
         table = (DefaultTableModel) jTable1.getModel();
-        Iterator iter = user.getCarros().iterator();
-        for(int i=0; i<table.getRowCount(); i++){
-            table.insertRow(i, new Object [] {iter.next()});
-        }
+        //Iterator iter = user.getCarros().iterator();
+        //for(int i=0; i<table.getRowCount(); i++){
+        //    table.insertRow(i, new Object [] {iter.next()});
+        //}
+        
+ 
     }
     
     public void setUtilizador(Utilizador user){
         this.user = user;
+        setTabela();
+    }
+    
+    public void setTabela(){
+             for(Carro c: user.getCarros()){
+             String marca = c.getMarca();
+             String modelo = c.getModelo();
+             String matricula = c.getMatricula();
+             table.insertRow(table.getRowCount(), new Object[]{marca, modelo, matricula});
+         }
     }
 
     /**
@@ -145,11 +157,6 @@ public class Veiculos extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         jButton6.setText("Edit");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
