@@ -25,7 +25,7 @@ public class TelaLugaresLivres extends javax.swing.JFrame {
         
          model = (DefaultTableModel) jTable1.getModel();
          for(int i=0; i<13;i++){
-         model.insertRow(model.getRowCount(), new Object[]{String.valueOf(i+1), aux.get(i).Livre, aux.get(i+13).Livre, aux.get(i+26).Livre, aux.get(i+39).Livre, aux.get(i+52).Livre});
+         model.insertRow(model.getRowCount(), new Object[]{String.valueOf(i+1), aux.get(i).isLivre(), aux.get(i+13).isLivre(), aux.get(i+26).isLivre(), aux.get(i+39).isLivre(), aux.get(i+52).isLivre()});
          }
         
     }
