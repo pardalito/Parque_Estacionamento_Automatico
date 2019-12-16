@@ -2,8 +2,22 @@ package gps;
 
 public final class Carro {
 
-    private final String marca;
-    private final String modelo;
+    /**
+     * @param marca the marca to set
+     */
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    /**
+     * @param modelo the modelo to set
+     */
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    private String marca;
+    private String modelo;
     private String matricula;
     
     //private Utilizador utilizador; //o utilizador é que tem carros nao o contrario

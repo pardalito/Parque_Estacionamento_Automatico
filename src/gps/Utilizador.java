@@ -42,6 +42,7 @@ final class Data {
 
 public class Utilizador {
     static final int passMin = 8, passMax = 25, nomeMin = 10, nomeMax = 80;
+    private String edit;
     private String cvc;
     private String num_cartao;
     private String mes;
@@ -132,6 +133,13 @@ public class Utilizador {
         return password;
     }
     
+        /**
+     * @return the edit
+     */
+    public String getEdit() {
+        return edit;
+    }
+    
     /**
      * @param csv the csv to set
      */
@@ -187,6 +195,13 @@ public class Utilizador {
     
     public void setPagamentos(ArrayList<String> pagamentos) {
         this.pagamentos = pagamentos;
+    }
+    
+        /**
+     * @param edit the edit to set
+     */
+    public void setEdit(String edit) {
+        this.edit = edit;
     }
     
     public void AdicionaPagamentos(double valor){
